@@ -1,0 +1,37 @@
+@1 -- Done.
+Send text when web kill
+If they webkill we should still send the text to the person killed if they have a phone
+
+@2 -- Done. Caps at 3 legit text request. Then they cannot attempt to bind for 12 hrs.
+Cap the number of binding requests they can send. That way one person doesn't use all of our texts.
+
+@3 -- Done. Also set up a daily cron job to clear the hits everyday.
+Record in the db the texts send from which server so we can keep track of when to switch over to the other
+server to send since the text limit is 75.
+
+@4
+Add index.php files to indexes to block directory view of our files.
+
+
+@5
+Subfiles should also include the headers to go to home if not logged in. Ex. Phonebind
+can go to w/o being logged.
+
+@6  -- Done. Shows "No Target" if they have no target.
+Show users name on the home page. Looks very bland w/o target.
+
+@7
+Mikhail. Set your Cron Jobs in php/chron.php for a Cron Job
+
+@8 -- Done.
+Updating the phone binding
+
+@9
+Documentation.
+
+@10
+Check headers. We need to put exit; after a header else the server will
+still execute some of the code.
+
+@11
+For the killing do we set the victims game_id to null? (kill.php)

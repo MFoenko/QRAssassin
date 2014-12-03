@@ -1,0 +1,23 @@
+/**
+    Commented out the redirect on home.php that would header to kill which would header
+    to home and header to kill.
+    
+    Alot of the headers on kill.php are unnessary b/c people won't see that results
+    since you header.
+    
+    Added on kill page query to show their new target and how many players left
+    
+    fixed a bit of textbinding so it flows more seamlessly.
+
+    Added the code for phonebind on one of my servers. So now we have 150 texts/day
+    from those 2 servers. We also have 75 coming from this server but that will
+    be reserved for kill messages.
+*/
+
+/**
+    Check logs. 
+
+
+
+
+*/
