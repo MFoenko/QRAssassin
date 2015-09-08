@@ -8,19 +8,16 @@
 		die('No Kill Code');
 	}
 
-	if (!isset($_SESSION['user'])){
-		header("Location: /qrassassin/index.php");
-		die('Not Logged in');
-	}
+	require("loginCheck.php");
 
 	require("./connect_to_database.php");
 	$killCode = mysqli_real_escape_string($conn, $_SESSION['killCode']);
 	
 
-	$uname = $_SESSION['user'];
+	$uid = $_SESSION['user'];
 	$query = "SELECT u.player_id, u.target_id, t.full_name, t.kill_code, t.target_id \"new_target\", t.game_id
 								FROM players u INNER JOIN players t ON u.target_id = t.player_id
-								WHERE u.username = '$uname'";					
+								WHERE u.player_id = '$uid'";					
 								
 	$result = mysqli_query($conn, $query ) 
 		 or trigger_error(mysql_error());

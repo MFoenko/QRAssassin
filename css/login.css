@@ -1,0 +1,21 @@
+.forms {
+
+}
+.forms label{
+	width: 200px;
+}
+.forms input{
+	width:100px;
+	vertical-align: center;
+}
+.forms h3{
+
+}
+#loginForm{
+
+}
+#registerForm{
+		display:none;
+}
+
+

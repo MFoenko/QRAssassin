@@ -1,12 +1,6 @@
 <?
-	session_start();
-	if (empty($_SESSION['user'])){
-		header("Location : /qrassassin");
-		die("Not Logged In");
-	}
 
-
-
+require("login_check.php");
 require("connect_to_database.php");
 
 
@@ -26,18 +20,18 @@ $timeResult = mysqli_query($conn, "SELECT NOW() FROM DUAL;");
 	echo $name;
 
 if (strtotime($game['start_reg'])>$time)
-	die('Registration is not open yet');
+	die('{"response":"REG_NOT_OPEN_YET","message":"Registration is not open yet"}');
 if (strtotime($game['end_reg'])<$time)
-	die('Registration is closed');
+	die('{"response":"REG_CLOSED","message":"RRegistration is closed"}');
 
 
 
 if ($game['password'] == $pass){
-	$uname = $_SESSION['user'];
+	$uid = $_SESSION['user'];
 	$gameId = $game['game_id'];
-	mysqli_query($conn, "UPDATE players SET game_id='$gameId' WHERE username = '$uname';");
+	mysqli_query($conn, "UPDATE players SET game_id='$gameId' WHERE player_id = '$uid';");
 }else{
-die('Invalid Name/Password');
+die('{"response":"REG_NOT_OPEN","message":"Invalid Name/Password"}');
 }
 header("Location: /qrassassin");
 exit;

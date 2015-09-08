@@ -24,30 +24,16 @@ a:hover{
 	color:#7A0000;
 }
 
+.link_span{
+	text-decoration: underline;
+	color:#DF0000;
+}
+.link_span:hover{
+	color:#7A0000;
+	cursor: pointer;
+
+}
 /* Login Page */
-.forms {
-			position: relative;
-			top: 100px;
-			width:500px;
-			margin:auto;
-			padding:20px;
-}
-.forms input{
-			display:block;
-}
-.forms h3{
-			text-align: center;
-}
-#loginForm{
-			margin-right: 100px;
-			float:left;
-			height:300px;
-}
-#registerForm{
-			height:300px;
-			float:right;
-			/*display:inline-block;*/
-}
 
 /*Home Page*/
 nav{
@@ -74,7 +60,7 @@ nav{
 			margin-top: 0 !important;
 }
 .gameMenu form{
-			margin-top: 65px !important
+	
 }
 .gameMenu h3{
 			margin: 2px 0;

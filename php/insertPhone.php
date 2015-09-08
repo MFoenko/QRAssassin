@@ -4,7 +4,7 @@
 		header("Location : /qrassassin");
 		die("Not Logged In");
 	}
-	$uname = $_SESSION['user'];
+	$uid = $_SESSION['user'];
 	$phoneNum = $_SESSION['phone'];
 	$code = $_SESSION['code'];
 
@@ -23,7 +23,7 @@
 
 	require("./connect_to_database.php");
 
-	mysqli_query($conn, "UPDATE players SET phone = '{$phoneNum}' WHERE username = '{$uname}'");
+	mysqli_query($conn, "UPDATE players SET phone = '{$phoneNum}' WHERE player_id = '{$uid}'");
 
 	unset($_SESSION['code']);
 	unset($_SESSION['phone']);
