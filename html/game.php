@@ -13,11 +13,7 @@
 		return false;
 	}
 
-	function createGame(s){
-
-
-		return false;
-	}
+	
 </script>
 <?php
 	
@@ -32,16 +28,8 @@
 	</form>
 
 
-	<span class="link_span" onclick="$('#createGameForm').toggle()">Or Create a Game</span>
-	<form id="createGameForm" onsubmit="return createGame(this)" style="display:none">
-		<input type="text" name="gameName" placeholder="Game Name">
-		<input type="text" name="gamePass" placeholder="Entry Code (Optional)">
-		<label>Time Registration Opens:<input type="datetime-local" name="startReg"></label>
-		<label>Time Registration Closes:<input type="datetime-local" name="endReg"></label>
-		<label>Time Game Starts:<input type="datetime-local" name="startGame"></label>
-
-		<input type="submit" value="Create">
-	</form>
+	<a href="html/createGame.php">Or Create a Game</span>
+	
 	
 	<?
 	}else{
@@ -77,7 +65,7 @@
 					<td><?php echo $kill['victim']; ?></td>
 				</tr>
 <?php
-		}
+		} //for loop close
 ?>
 				</tbody>
 				</table>
