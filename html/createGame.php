@@ -1,10 +1,26 @@
+<?php
+	session_start();
+	require("php/connect_to_database.php");
+
+	if (!isset($_SESSION['user']))
+		//TODO redirect to index
+	 header("/");
+?>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 	<script type="text/javascript">
-		function createGame(s){
-			//TODO write JS function to create game via AJAX
-
+		function createGame(form){
+			$.post("./php/createGame.php", {
+				game_name: form.gameName.value,
+				game_code: form.gamePass.value,
+				reg_start: form.startReg.value,
+				reg_end: form.endReg.value,
+				game_start: form.startGame.value}, function(data){
+					//on game create result
+				});
 		return false;
 	}
 	</script>
