@@ -6,7 +6,7 @@
 }
 	$uname = $_SESSION['user'];
 
-	require("../php/connect_to_database.php");
+	require("php/connect_to_database.php");
 
 	$result = mysqli_query($conn, "SELECT * FROM players WHERE username = '$uname';");
 	$userInfo = mysqli_fetch_assoc($result);

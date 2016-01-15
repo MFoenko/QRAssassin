@@ -13,6 +13,15 @@
 		return false;
 	}
 
+	function leaveGame(){
+		//this POST is done so that players cannot make a qr code 
+		//that kicks players who scan it out of the game
+		//anticipating hacks ftw
+		$.post("/php/leaveGame.php", {"junkPostValue": "true"}, function(data){
+			window.reload();
+		})
+	}
+
 	
 </script>
 <?php
@@ -28,7 +37,7 @@
 	</form>
 
 
-	<a href="html/createGame.php">Or Create a Game</span>
+	<a href="html/createGame.php">Or Create a Game</a>
 	
 	
 	<?
@@ -70,16 +79,17 @@
 				</tbody>
 				</table>
 			</div>
-				<a href="php/leaveGame.php">Leave Game</a>
-
+				<!-- <a href="php/leaveGame.php">Leave Game</a> -->
+				
+<span onclick="leaveGame" class="link">Leave Game</span>
 <?php
 	}else{
 ?>
 	<div class="gameInfo">Start Registration:<br> <?php echo $game['start_reg'];?></div>
 	<div class="gameInfo">End Registration:<br> <?php echo $game['end_reg'];?></div>
 	<div class="gameInfo">Start Game:<br> <?php echo $game['start_game'];?></div>
-	<a href="php/leaveGame.php">Leave Game</a>
-
+	<!-- <a href="php/leaveGame.php">Leave Game</a> -->
+	<span onclick="leaveGame()" class="link_span">Leave Game</span>
 
 
 <?php

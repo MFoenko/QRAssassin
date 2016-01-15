@@ -1,91 +1,97 @@
 body{
-			font: 30px Arial;
+	font: 30px Arial;
 }
 input{
-			height:30px;
-			margin-top: 15px;
-			width:150px;
+	height:30px;
+	margin-top: 15px;
+	width:200px;
 }
 img{
-			height:30px;
-			margin-right:10px;
+	height:30px;
+	margin-right:10px;
 }
 .domainAd {
-			position:fixed;
-			right:0px;
-			bottom:0px;
+	position:fixed;
+	right:0px;
+	bottom:0px;
 }
-a{
+a, .link_span{
 	text-decoration: none;
 	color:#DF0000;
 }
 
-a:hover{
-	color:#7A0000;
-}
-
-.link_span{
-	text-decoration: underline;
-	color:#DF0000;
-}
-.link_span:hover{
+a:hover, .link_span:hover{
 	color:#7A0000;
 	cursor: pointer;
-
 }
+
 /* Login Page */
 
 /*Home Page*/
 nav{
-			position: fixed;
-			right: 20px;
-			top: 20px;
+	position: fixed;
+	right: 20px;
+	top: 20px;
 }
 .content{
-			width:550px;
-			height: 300px;
-			margin: auto;
-			margin-top: 150px;
-			border: 2px solid black;
-			padding:15px;
+	width:750px;
+	height: 300px;
+	margin: auto;
+	margin-top: 150px;
+	border: 2px solid black;
+	padding:15px;
 }
 .content div{
-			margin-top:30px;
+	margin-top:30px;
 }
 .gameMenu{
-			float:right;
-			height:100%;
-			width:200px;
-			text-align:center;
-			margin-top: 0 !important;
+	float:right;
+	height:100%;
+	width:300px;
+	text-align:center;
+	margin-top: 0 !important;
 }
 .gameMenu form{
 	
 }
 .gameMenu h3{
-			margin: 2px 0;
+	margin: 2px 0;
 }
 .gameMenu .killLog{
-			width:220px;
-			height: 220px;
-			overflow: auto;
-			border: 1px solid black;
-			margin: 0 0 15px -15px;
+	width:220px;
+	height: 220px;
+	overflow: auto;
+	border: 1px solid black;
+	margin: 0 0 15px -15px;
 }
 .gameMenu table{
-			border-collapse: collapse;
+	border-collapse: collapse;
 }
 .gameMenu table thead{
-			font-weight:bold;
-			padding:2px;
+	font-weight:bold;
+	padding:2px;
 }
 .gameMenu table td{
-			border: 1px solid black;
-			width: 70px;
-			height: 60px;
-			padding: 2px;
+	border: 1px solid black;
+	width: 70px;
+	height: 60px;
+	padding: 2px;
 }
 .gameInfo{
 	margin-top: 20px !important;
 	font:24px arial;
+}
+
+#qrcode{
+	display: none;
+}
+
+@media only print{
+	#main_content{
+		display: none;
+	}
+
+	#qrcode{
+		display: inline;
+	}
 }

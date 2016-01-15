@@ -4,6 +4,11 @@ if (empty($_SESSION['user'])){
 	header("Location : /qrassassin");
 	die("Not Logged In");
 }
+if(empty($_POST['junkPostValue'])){
+	die('{"response":"UNAUTHORIZED_LEAVE", "message":"You are attempting to leave the game. If you see this message after 
+		attempting to assissinate someone, please let the game admin know; the person you scanned is attempting to cheat."}')
+}
+
 require("connect_to_database.php");
 $uid = $_SESSION['user'];
 
@@ -19,12 +24,12 @@ $tId = $playerInfo['target_id'];
 $gId = $playerInfo['game_id'];
 $isStart = $playerInfo['started'];
 
-//set give quitters target to the next player
+//give quitter's target to the next player
 mysqli_query($conn, "UPDATE players 
 					SET target_id = '$tId'
 					WHERE target_id = '$uId';");
 
-//removes player from the game
+//removes quitter from the game
 mysqli_query($conn, "UPDATE players 
 					SET game_id = NULL, target_id=NULL, kill_code=NULL
 					WHERE player_id = '$uid';");
@@ -36,14 +41,6 @@ mysqli_query($conn, "INSERT INTO kills (killer_id, victim_id, game_id)
 					VALUES ('$uId','$uId','$gId');");
 }
 
-header("Location: /qrassassin");
-exit;
-?>r("Location: /qrassassin");
-exit;
-?>
-?>
-}
-
-header("Location: /qrassassin");
+//header("Location: /qrassassin");
 exit;
 ?>

@@ -1,4 +1,16 @@
 <?php
+
+/*
+	//response template
+	'{
+		"response":"ASSASSINATION_SUCCESFUL",
+		"message":"sample text",
+		"extra": {
+					//extra info
+				 }
+	}'
+*/
+
 	session_start();
 
 	if(isset($_GET['kill_code']))
@@ -29,7 +41,12 @@
 	$gameId = $killInfo['game_id'];
 	
 	if (empty($killInfo) || strlen($killCode) != 10 && $killCode != $killInfo['kill_code'] || strlen($killCode) == 10 && $killCode != substr($killInfo['kill_code'],0,10)){
-		echo "The Kill Code is Incorrect";
+		//echo "The Kill Code is Incorrect";
+		echo '{
+		"response":"INCORRECT_CODE",
+		"message":"That\'s the wrong person!"
+		
+			}';
 		unset($_SESSION['kill_code']);
 		//header('Location: /qrassassin');
 		die();
@@ -49,23 +66,34 @@
 			$killerQuery = mysqli_query($conn,"select full_name from players where player_id = '{$killerId}'");
 			$killerName = mysqli_fetch_row($killerQuery);
 			$deathNote = "You have been Killed By " . $killerName[0];
+			//i guess i liked anime back then
 			sendOutboundOnlyMessage($victimPhone,$deathNote);
 			ob_clean();
 		}
 		mysqli_query($conn, "UPDATE players SET target_id = '$newTarget' WHERE player_id = '$killerId';");
-		echo "Assassination Succesful\n";
+		echo "Assissination Succesful!";
 		
 		
 		// Load your new target 
 		$result = mysqli_query($conn,"Select full_name from players where player_id='{$newTarget}'");
 		$newTargetInfo = mysqli_fetch_row($result);
-		echo "Your new target is " . $newTargetInfo[0] . "\n";
+		 
+		//echo "Your new target is " . $newTargetInfo[0] . "\n";
 		
 		
 		// Thought this might be an interesting feature to add. The number of players in the game left
 		$result = mysqli_query($conn,"Select count(*) from players where game_id = '{$gameId}'");
 		$result = mysqli_fetch_row($result);
-		echo "There are " . $result[0] . " assassins left.";
+		//echo "There are " . $result[0] . " assassins left.";
+
+		echo '{
+		"response":"ASSASSINATION_SUCCESSFUL",
+		"message":"sample text",
+		"extra": {
+					"newTarget":"{$newTargetInfo[0]}",
+					"remainingPlayers":"$result[0]";
+				 }
+			}';
 }
 		
 
